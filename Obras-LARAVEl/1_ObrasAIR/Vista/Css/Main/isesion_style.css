@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@300;400;500;600&display=swap');
+
+:root {
+    --navy:       #0D1F3C;
+    --navy-light: #2B5197;
+    --blue:       #0EA5E9;
+    --blue-pale:  #E0F2FE;
+    --fog:        #EEF2F8;
+    --white:      #FFFFFF;
+    --text-dark:  #0D1F3C;
+    --text-mid:   #455A7A;
+    --border:     rgba(13,31,60,0.1);
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+    color: var(--text-dark);
+    background: var(--white);
+    overflow-x: hidden;
+}
+
+section.form {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 72px;
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+}
+
+section.form::before {
+    content: '';
+    position: absolute; 
+    inset: 0;
+    background-image:
+        repeating-linear-gradient( 45deg, transparent, transparent 60px, rgba(13,31,60,0.018) 60px, rgba(13,31,60,0.018) 61px),
+        repeating-linear-gradient(-45deg, transparent, transparent 60px, rgba(13,31,60,0.018) 60px, rgba(13,31,60,0.018) 61px);
+    pointer-events: none;
+}
+
+section.form::after {
+    content: '';
+    position: absolute;
+    right: -80px; 
+    top: 50%; 
+    transform: translateY(-50%);
+    width: 600px; 
+    height: 600px; 
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(14,165,233,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.descrip {
+    position: relative; 
+    z-index: 2;
+    width: 100%; 
+    max-width: 480px;
+    display: flex; 
+    flex-direction: column; 
+    gap: 24px;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.titulo h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; 
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--navy); 
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.titulo p {
+    font-size: 15px; 
+    font-weight: 300;
+    color: var(--text-mid); 
+    line-height: 1.6;
+}
+
+.login {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 32px;
+    box-shadow: 0 8px 32px rgba(13,31,60,0.08);
+}
+
+form label {
+    display: block;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; 
+    font-size: 13px;
+    letter-spacing: 1px; 
+    text-transform: uppercase;
+    color: var(--text-mid);
+    margin-bottom: 6px;
+    margin-top: 18px;
+}
+
+form label:first-of-type { 
+    margin-top: 0; 
+}
+
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    color: var(--text-dark);
+    background: var(--fog);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color .2s, background .2s;
+    margin-bottom: 4px;
+}
+
+form input[type="email"]::placeholder,
+form input[type="password"]::placeholder {
+    color: rgba(13,31,60,0.3);
+}
+
+form input[type="email"]:focus,
+form input[type="password"]:focus {
+    border-color: var(--blue);
+    background: var(--white);
+}
+
+.opciones {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px 0 24px;
+}
+
+.opciones > label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px; 
+    font-weight: 400;
+    letter-spacing: 0; 
+    text-transform: none;
+    color: var(--text-mid);
+    margin: 0; 
+    cursor: pointer;
+}
+
+.opciones input[type="checkbox"] {
+    width: 15px; 
+    height: 15px;
+    accent-color: var(--blue);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.opciones a {
+    font-size: 13px; 
+    font-weight: 500;
+    color: var(--blue);
+    text-decoration: none;
+    transition: opacity .2s;
+}
+
+.opciones a:hover { 
+    opacity: 0.75; 
+}
+
+.btn-inicio {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px; 
+    font-weight: 600;
+    border: none; 
+    border-radius: 8px;
+    padding: 13px 28px;
+    cursor: pointer;
+    transition: opacity .2s, transform .15s;
+}
+
+.btn-inicio:hover { 
+    opacity: 0.85; 
+    transform: translateY(-2px); 
+}
+
+.registro {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.registro p {
+    font-size: 14px; 
+    font-weight: 300;
+    color: var(--text-mid);
+}
+
+.registro a {
+    font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+    transition: opacity .2s;
+}
+
+.registro a:hover { 
+    opacity: 0.75; 
+}

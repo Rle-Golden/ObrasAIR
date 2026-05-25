@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@300;400;500;600&display=swap');
+
+:root {
+    --navy:       #0D1F3C;
+    --navy-light: #2B5197;
+    --blue:       #0EA5E9;
+    --blue-pale:  #E0F2FE;
+    --fog:        #EEF2F8;
+    --white:      #FFFFFF;
+    --text-dark:  #0D1F3C;
+    --text-mid:   #455A7A;
+    --border:     rgba(13,31,60,0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Barlow', sans-serif;
+    color: var(--text-dark);
+    background: var(--fog);
+    overflow-x: hidden;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 40px 64px;
+}
+
+/* ── CABECERA EMPRESA ── */
+.empresa-header {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Halo decorativo */
+.empresa-header::after {
+    content: '';
+    position: absolute;
+    right: -60px; top: 50%; transform: translateY(-50%);
+    width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(14,165,233,0.12) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.empresa-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative; z-index: 2;
+}
+
+.empresa-avatar {
+    width: 60px; height: 60px;
+    border-radius: 14px;
+    background: rgba(14,165,233,0.2);
+    border: 1.5px solid rgba(14,165,233,0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 22px;
+    color: var(--blue);
+    flex-shrink: 0;
+}
+
+.empresa-label {
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 1px; text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 4px;
+}
+
+.empresa-nombre {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 28px;
+    color: var(--white); letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.empresa-sector {
+    font-size: 14px; font-weight: 300;
+    color: rgba(255,255,255,0.5);
+}
+
+.btn-nueva {
+    position: relative; z-index: 2;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px; font-weight: 600;
+    text-decoration: none;
+    padding: 11px 24px;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: opacity .2s, transform .15s;
+}
+
+.btn-nueva:hover { opacity: 0.85; transform: translateY(-2px); }
+
+/* ── ESTADÍSTICAS ── */
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+}
+
+.stat-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 40px;
+    color: var(--navy); line-height: 1;
+}
+
+.stat-lbl {
+    font-size: 13px; font-weight: 400;
+    color: var(--text-mid);
+}
+
+/* ── ENCABEZADO SECCIÓN ── */
+.seccion-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 12px;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--blue); margin-bottom: 6px;
+}
+
+.seccion-header h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 30px;
+    color: var(--text-dark);
+}
+
+/* ── GRID OFERTAS ── */
+.ofertas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+}
+
+/* ── TARJETA OFERTA ── */
+.oferta-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+
+.oferta-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--blue);
+    box-shadow: 0 8px 24px rgba(13,31,60,0.09);
+}
+
+.oferta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.oferta-tipo {
+    display: inline-block;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase;
+    background: var(--blue-pale);
+    color: var(--blue);
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+}
+
+.tipo-obra {
+    background: #EBF2FF;
+    color: var(--navy-light);
+}
+
+.oferta-nombre {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 21px;
+    color: var(--text-dark); margin-bottom: 3px;
+}
+
+.oferta-empresa {
+    font-size: 12px; color: var(--text-mid);
+}
+
+.oferta-id {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 13px;
+    color: var(--text-mid);
+    background: var(--fog);
+    border-radius: 6px;
+    padding: 4px 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.oferta-desc {
+    font-size: 13px; font-weight: 300;
+    color: var(--text-mid); line-height: 1.65;
+}
+
+/* Tags de requisitos */
+.oferta-requisitos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.req-tag {
+    font-size: 12px; font-weight: 500;
+    color: var(--text-mid);
+    background: var(--fog);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+}
+
+/* Footer de la tarjeta */
+.oferta-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+    margin-top: auto;
+}
+
+.oferta-datos {
+    display: flex;
+    gap: 14px;
+}
+
+.dato {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px; font-weight: 500;
+    color: var(--text-dark);
+}
+
+.dato svg {
+    width: 14px; height: 14px;
+    fill: var(--text-mid);
+    flex-shrink: 0;
+}
+
+.oferta-acciones {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-editar {
+    font-size: 13px; font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+    transition: opacity .2s;
+}
+
+.btn-editar:hover { opacity: 0.7; }
+
+.badge-activa {
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.5px;
+    background: #DCFCE7;
+    color: #15803D;
+    padding: 3px 10px;
+    border-radius: 20px;
+}

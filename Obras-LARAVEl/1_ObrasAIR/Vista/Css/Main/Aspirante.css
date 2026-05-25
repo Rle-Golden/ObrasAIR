@@ -1,0 +1,471 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@300;400;500;600&display=swap');
+
+:root {
+    --navy:       #0D1F3C;
+    --navy-light: #2B5197;
+    --blue:       #0EA5E9;
+    --blue-pale:  #E0F2FE;
+    --fog:        #EEF2F8;
+    --white:      #FFFFFF;
+    --text-dark:  #0D1F3C;
+    --text-mid:   #455A7A;
+    --border:     rgba(13,31,60,0.08);
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--fog);
+    color: var(--text-dark);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ── NAVEGACIÓN ── */
+.navegacion {
+    height: 64px;
+    background: var(--navy);
+    border-bottom: 2px solid var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logotipo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logotipo img {
+    height: 34px;
+}
+
+.logotipo .texto {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+
+.insignia-aspirante {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: rgba(14,165,233,0.12);
+    border: 1px solid rgba(14,165,233,0.25);
+    border-radius: 4px;
+    padding: 2px 8px;
+    margin-left: 6px;
+}
+
+.lista-navegacion {
+    list-style: none;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.lista-navegacion li a {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    padding: 7px 16px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.lista-navegacion li a:hover {
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.lista-navegacion li a.activo {
+    color: var(--white);
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.lista-navegacion li.separador {
+    width: 1px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 6px;
+}
+
+.boton-cerrar-sesion {
+    color: var(--white) !important;
+    background: rgba(220, 60, 60, 0.2) !important;
+    border-color: rgba(220, 60, 60, 0.4) !important;
+}
+
+.boton-cerrar-sesion:hover {
+    background: rgba(220, 60, 60, 0.35) !important;
+}
+
+/* ── CONTENIDO PRINCIPAL ── */
+.principal {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 40px 60px;
+}
+
+/* ── BARRA DE BÚSQUEDA Y FILTROS ── */
+.barra-filtros {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+@media(min-width: 768px) {
+    .barra-filtros {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+.grupo-busqueda {
+    flex: 1;
+    position: relative;
+}
+
+.icono-buscar {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-mid);
+    font-size: 18px;
+}
+
+.control-formulario {
+    width: 100%;
+    height: 42px;
+    background: var(--fog);
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: var(--text-dark);
+    transition: all 0.2s;
+}
+
+.control-formulario:focus {
+    outline: none;
+    background: var(--white);
+    border-color: var(--blue);
+}
+
+.entrada-busqueda {
+    padding: 0 16px 0 42px;
+}
+
+.grupo-selectores {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+@media(min-width: 768px) {
+    .grupo-selectores {
+        flex-direction: row;
+        width: auto;
+    }
+}
+
+.selector-filtro {
+    padding: 0 12px;
+    cursor: pointer;
+}
+
+@media(min-width: 768px) {
+    .selector-filtro {
+        width: 180px;
+    }
+}
+
+.boton-buscar {
+    height: 42px;
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.boton-buscar:hover {
+    background: #0284c7;
+}
+
+/* ── CABECERA DE SECCIÓN ── */
+.cabecera-seccion {
+    margin-bottom: 24px;
+}
+
+.titulo-seccion {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: var(--text-dark);
+    letter-spacing: 0.5px;
+}
+
+.subtitulo-seccion {
+    font-size: 14px;
+    color: var(--text-mid);
+    margin-top: 2px;
+}
+
+/* ── CUADRÍCULA DE TARJETAS (OFERTAS) ── */
+.cuadricula-ofertas {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+@media(min-width: 768px) {
+    .cuadricula-ofertas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.tarjeta-oferta {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 260px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.tarjeta-oferta:hover {
+    transform: translateY(-3px);
+    border-color: var(--blue);
+}
+
+.tarjeta-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.tarjeta-titulo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--text-dark);
+    line-height: 1.2;
+}
+
+.tarjeta-empresa {
+    font-size: 13px;
+    color: var(--text-mid);
+    font-weight: 500;
+    margin-top: 2px;
+}
+
+.tarjeta-bloque-derecho {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.empresa-logotipo {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: var(--fog);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--navy-light);
+    flex-shrink: 0;
+}
+
+/* ── ETIQUETAS / BADGES ── */
+.etiqueta {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 2px 6px;
+    white-space: nowrap;
+}
+
+.etiqueta.destacada { 
+    background: #FEF3C7; 
+    color: #92400E; 
+}
+
+.etiqueta.urgente { 
+    background: #FEE2E2; 
+    color: #B91C1C; 
+}
+
+/* ── DESCRIPCIÓN Y REQUISITOS ── */
+.tarjeta-descripcion {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.tarjeta-etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+}
+
+.etiqueta-requisito {
+    font-size: 11px;
+    background: var(--fog);
+    color: var(--text-dark);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+/* ── PIE DE LA TARJETA ── */
+.tarjeta-pie {
+    border-top: 1px solid rgba(13,31,60,0.05);
+    padding-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tarjeta-metadatos {
+    display: flex;
+    gap: 12px;
+}
+
+.metadato-item {
+    font-size: 11px;
+    color: #94A3B8;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 500;
+}
+
+.metadato-item i {
+    font-size: 14px;
+}
+
+.boton-postularse {
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.boton-postularse:hover {
+    background: #0284c7;
+}
+
+/* ── PIE DE PÁGINA (FOOTER) ── */
+.pie-pagina {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 32px 40px;
+}
+
+.contenido-pie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.redes-sociales {
+    display: flex;
+    gap: 12px;
+}
+
+.red-social {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.red-social:hover {
+    border-color: var(--blue);
+    background: rgba(14,165,233,0.1);
+}
+
+.red-social img {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+    opacity: 0.65;
+}
+
+.red-social:hover img {
+    opacity: 1;
+}
+
+.texto-pie {
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.3px;
+}
