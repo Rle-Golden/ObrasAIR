@@ -16,7 +16,7 @@
             <div class="login">
                 <form id="forgotForm">
                     <label for="email">Correo Electronico</label> <br>
-                    <input required name="email" type="email" id="email" placeholder="tucorreo@obrasair.com"> <br>
+                    <input required name="email" type="email" id="email" placeholder="tucorreo@obrasair.com"> <br> <br>
                     <button type="submit" class="btn-inicio">Enviar correo</button>
                 </form>
                 <div id="message" style="margin-top:20px; display:none;"></div>

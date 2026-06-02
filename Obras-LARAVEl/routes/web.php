@@ -34,7 +34,7 @@ Route::get('/', function () {
     return Response::file($fullPath, [
         'Content-Type' => File::mimeType($fullPath) ?: 'text/html',
     ]);
-});
+})->name('home');
 
 Route::get('/Css/{path}', function ($path) {
     $fullPath = base_path('1_ObrasAIR/Vista/Css/'.$path);

@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 use Carbon\Carbon;
 use App\Mail\ResetPasswordMail;
 
@@ -28,6 +31,15 @@ class PasswordResetController extends Controller
                 return response()->json(['message' => 'Si el correo existe en nuestro sistema, recibirás un email para restablecer tu contraseña.'], 200);
             }
 
+            // ensure the password_resets table exists before inserting tokens
+            if (! Schema::hasTable('password_resets')) {
+                Schema::create('password_resets', function (Blueprint $table) {
+                    $table->string('email')->index();
+                    $table->string('token');
+                    $table->timestamp('created_at')->nullable();
+                });
+            }
+
             // generate token and store hashed
             $plainToken = bin2hex(random_bytes(32));
             $hashed = Hash::make($plainToken);
@@ -43,7 +55,7 @@ class PasswordResetController extends Controller
             return response()->json(['message' => 'Si el correo existe en nuestro sistema, recibirás un email para restablecer tu contraseña.'], 200);
         } catch (\Exception $e) {
             // Log and return safe JSON error (avoid HTML error pages)
-            \Log::error('Password reset (forgot) error: '.$e->getMessage(), ['exception' => $e]);
+            Log::error('Password reset (forgot) error: '.$e->getMessage(), ['exception' => $e]);
 
             return response()->json([
                 'message' => 'Error enviando el correo de restablecimiento.',
@@ -93,7 +105,7 @@ class PasswordResetController extends Controller
 
             return response()->json(['message' => 'Contraseña restablecida correctamente.'], 200);
         } catch (\Exception $e) {
-            \Log::error('Password reset (reset) error: '.$e->getMessage(), ['exception' => $e]);
+            Log::error('Password reset (reset) error: '.$e->getMessage(), ['exception' => $e]);
 
             return response()->json([
                 'message' => 'Error al restablecer la contraseña.',
